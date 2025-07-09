@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		
+		<title>
+			Processing...
+		</title>
+		
+		<style>
+			
+			canvas 
+			{
+				position: absolute;
+				top: 50vh;
+				left: 25vw;
+				width: 50vw;
+				height: 5vh;
+				border: .01em solid darkgreen;
+			}
+			
+			span
+			{
+				color: white;
+				background-color: red;
+				font-weight: bold;
+				font-size: 3em;
+				padding: .5em;
+				font-family: sans-serif;
+				border-radius: 50px 0 50px 0;
+			}
+			
+			center
+			{
+				position: relative;
+				top: 40vh;
+				user-select: none;
+			}
+			
+		</style>
+		
+		<meta charset="UTF-8"/>
+		
+	</head>
+
+	<body>
+	
+		<center>Attempting to give a damn...</center>
+		<canvas></canvas>
+
+		<script>
+
+			const damnCanvas = document.querySelector("canvas");
+			const damnBar = damnCanvas.getContext("2d");
+			damnBar.fillStyle = "green";
+			let count = 0;
+			const width = 200;
+			const height = 200;
+
+			const intervalID = setInterval(() => {
+				
+				if (count < width)
+					damnBar.fillRect(0, 0, count++, height);
+					
+				else {
+					
+					const damnMsg = document.querySelector("center");
+					damnMsg.innerText = "Unable to give a damn. Aborting service...";
+					
+					setTimeout(() => {
+						
+						damnMsg.innerHTML = "<span>X</span> Server failed. Damn not given.";
+						damnCanvas.style.display = "none";
+						document.querySelector("title").innerText = "ERROR";
+					}, 3000);
+					
+					clearInterval(intervalID);
+				}
+			}, 25);
+
+		</script>
+		
+	</body>
+	
+</html>
